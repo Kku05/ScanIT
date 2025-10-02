@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate EAN-13 Barcode</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode/dist/JsBarcode.all.min.js"></script>
+    <style>
+        @media print {
+            body * { visibility: hidden; }
+            #printBarcodes, #printBarcodes * { visibility: visible; }
+            #printBarcodes {
+                position: absolute;
+                left: 0; top: 0; width: 100%;
+                margin: 0; padding: 0;
+            }
+        }
+        #printBarcodes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18mm 0; /* vertical gap between rows */
+            justify-content: flex-start;
+            margin-top: 10mm;
+        }
+        .barcode-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 62mm;      /* 3 per row on A4 (210mm - margins) */
+            height: 38mm;
+            margin: 0 0 12mm 0; /* bottom margin between rows */
+            box-sizing: border-box;
+            page-break-inside: avoid;
+        }
+        .barcode-label {
+            font-size: 14px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EAN-13 Barcode Generator</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="camera.html">Camera Page</a>
+        </nav>
+    </header>
+    <main>
+        <form id="barcodeForm">
+            <label>
+                Product Name:
+                <input type="text" id="productName" required>
+            </label>
+            <label>
+                Price:
+                <input type="number" id="productPrice" required min="0" step="0.01">
+            </label>
+            <button type="submit">Generate Barcode</button>
+        </form>
+        <div id="barcodeResult" style="display:none;">
+            <h2>Barcode for <span id="displayName"></span></h2>
+            <label>
+                How many barcodes to print:
+                <input type="number" id="barcodeCount" min="1" max="100" value="1" style="width:60px;">
+            </label>
+            <button id="showBarcodesBtn" type="button">Show Barcodes</button>
+            <div style="margin:10px 0;">
+                <button id="printBarcodesBtn" type="button" style="display:none;">Print Barcodes</button>
+            </div>
+            <div id="printBarcodes"></div>
+        </div>
+    </main>
+    <script src="js/barcode.js"></script>
+</body>
+</html>

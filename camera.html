@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EAN Barcode Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSP safe: only allow self + unpkg for html5-qrcode -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://unpkg.com;">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    @media print {
+      th:last-child,
+      td:last-child,
+      button,
+      input[type="number"]#discount {
+        display: none !important;
+      }
+      #discount-text {
+        display: inline !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>EAN Barcode Scanner</h2>
+      <nav>
+        <ul>
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="barcode.html">Generate EAN-13 Barcode</a></li>
+        </ul>
+    </nav>
+  <!-- Scanner -->
+  <div id="reader" style="width:400px; margin:auto;"></div>
+
+  <!-- Manual entry -->
+  <div style="margin-top:15px; text-align:center;">
+    <input type="text" id="manual-barcode" placeholder="Enter barcode manually">
+    <button id="manual-submit">Add</button>
+  </div>
+
+  <!-- Scanned items list -->
+  <div id="cart" style="margin-top:30px;">
+  <div id="bill">
+    <h1>Laxmi Narayan Cloth House</h1>
+    <br>
+    <h3>Name:.............</h3>
+    <table border="1" cellpadding="6" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>Barcode</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Total</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="cart-body"></tbody>
+      <tfoot>
+        <tr>
+            <td colspan="5" style="text-align: right;"><strong>Sub-Total:</strong></td>
+            <td id="sub-total">₹0.00</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: right;">
+                <strong>Discount (%):</strong>
+                <input type="number" id="discount" min="0" max="100" value="0" style="width: 60px;">
+                <span id="discount-text"></span>
+            </td>
+            <td id="discount-amount">₹0.00</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: right;"><strong>Grand Total:</strong></td>
+            <td id="grand-total">₹0.00</td>
+            <td></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <button id="print-bill-btn" style="margin-top:20px;">Print Bill</button>
+</div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script src="js/camera.js"></script>
+</body>
+</html>
