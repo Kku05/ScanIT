@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #000 !important;
+}
+
+*, *::before, *::after {
+    color: #000 !important;
+}
+
+header {
+    background: #35424a;
+    /* color removed to inherit black */
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav {
+    margin: 20px 0;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    /* color removed to inherit black */
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+footer {
+    background: #35424a;
+    /* color removed to inherit black */
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
